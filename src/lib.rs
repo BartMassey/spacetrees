@@ -1,8 +1,10 @@
 mod bintree;
 mod quadtree;
+mod octtree;
 
 pub use bintree::*;
 pub use quadtree::*;
+pub use octtree::*;
 
 use std::cmp::Ord;
 
