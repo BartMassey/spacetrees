@@ -10,11 +10,11 @@ use std::cmp::Ord;
 
 pub struct Partition<D, C> {
     pub(crate) mid: D,
-    pub(crate) split: C,
+    pub(crate) split: [C; 2],
 }
 
-impl<D: Ord, T> Partition<D, [T; 2]> {
-    pub(crate) fn child(&self, target: &D) -> &T {
+impl<D: Ord, C> Partition<D, C> {
+    pub(crate) fn child(&self, target: &D) -> &C {
         if *target < self.mid {
             &self.split[0]
         } else {

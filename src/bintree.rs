@@ -1,6 +1,6 @@
 use crate::*;
 
-pub struct BinChildren<D, T>(Partition<D, [BinTree<D, T>; 2]>);
+pub struct BinChildren<D, T>(Partition<D, BinTree<D, T>>);
 
 pub type BinTree<D, T> = SpaceTree<T, BinChildren<D, T>>;
 

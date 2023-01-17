@@ -1,8 +1,8 @@
 use crate::*;
 
-type Split0<D, T> = Partition<D, [OctTree<D, T>; 2]>;
-type Split1<D, T> = Partition<D, [Split0<D, T>; 2]>;
-pub struct OctChildren<D, T>(Partition<D, [Split1<D, T>; 2]>);
+type Split0<D, T> = Partition<D, OctTree<D, T>>;
+type Split1<D, T> = Partition<D, Split0<D, T>>;
+pub struct OctChildren<D, T>(Partition<D, Split1<D, T>>);
 
 pub type OctTree<D, T> = SpaceTree<T, OctChildren<D, T>>;
 

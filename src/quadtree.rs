@@ -1,7 +1,7 @@
 use crate::*;
 
-type Split<D, T> = Partition<D, [QuadTree<D, T>; 2]>;
-pub struct QuadChildren<D, T>(Partition<D, [Split<D, T>; 2]>);
+type Split<D, T> = Partition<D, QuadTree<D, T>>;
+pub struct QuadChildren<D, T>(Partition<D, Split<D, T>>);
 
 pub type QuadTree<D, T> = SpaceTree<T, QuadChildren<D, T>>;
 
