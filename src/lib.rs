@@ -13,6 +13,16 @@ pub struct Partition<D, C> {
     pub(crate) split: C,
 }
 
+impl<D: Ord, T> Partition<D, [T; 2]> {
+    pub(crate) fn child(&self, target: &D) -> &T {
+        if *target < self.mid {
+            &self.split[0]
+        } else {
+            &self.split[1]
+        }
+    }
+}
+
 pub enum SpaceTree<T, C> {
     Leaf(Vec<T>),
     SubTree(Box<C>),

@@ -8,10 +8,6 @@ impl<D: Ord, T> Children<T> for BinChildren<D, T> {
     type Target = D;
 
     fn select(&self, target: &Self::Target) -> &SpaceTree<T, Self> {
-        if *target < self.0.mid {
-            &self.0.split[0]
-        } else {
-            &self.0.split[1]
-        }
+        self.0.child(target)
     }
 }

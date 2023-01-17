@@ -9,15 +9,7 @@ impl<D: Ord, T> Children<T> for QuadChildren<D, T> {
     type Target = [D; 2];
 
     fn select(&self, target: &Self::Target) -> &SpaceTree<T, Self> {
-        let next = if target[0] < self.0.mid {
-            &self.0.split[0]
-        } else {
-            &self.0.split[1]
-        };
-        if target[1] < next.mid {
-            &next.split[0]
-        } else {
-            &next.split[1]
-        }
+        let next = self.0.child(&target[0]);
+        next.child(&target[1])
     }
 }
