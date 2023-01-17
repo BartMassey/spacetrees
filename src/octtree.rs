@@ -14,4 +14,10 @@ impl<D: Ord, T> Children<T> for OctChildren<D, T> {
         let next = next.child(&target[1]);
         next.child(&target[2])
     }
+
+    fn select_mut(&mut self, target: &Self::Target) -> &mut SpaceTree<T, Self> {
+        let next = self.0.child_mut(&target[0]);
+        let next = next.child_mut(&target[1]);
+        next.child_mut(&target[2])
+    }
 }

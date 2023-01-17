@@ -12,4 +12,9 @@ impl<D: Ord, T> Children<T> for QuadChildren<D, T> {
         let next = self.0.child(&target[0]);
         next.child(&target[1])
     }
+
+    fn select_mut(&mut self, target: &Self::Target) -> &mut SpaceTree<T, Self> {
+        let next = self.0.child_mut(&target[0]);
+        next.child_mut(&target[1])
+    }
 }

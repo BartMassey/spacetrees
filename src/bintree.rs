@@ -10,4 +10,8 @@ impl<D: Ord, T> Children<T> for BinChildren<D, T> {
     fn select(&self, target: &Self::Target) -> &SpaceTree<T, Self> {
         self.0.child(target)
     }
+
+    fn select_mut(&mut self, target: &Self::Target) -> &mut SpaceTree<T, Self> {
+        self.0.child_mut(target)
+    }
 }
